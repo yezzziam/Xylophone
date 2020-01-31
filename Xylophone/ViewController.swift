@@ -21,23 +21,22 @@ class ViewController: UIViewController {
         key.frame = CGRect(x: 100, y: 100, width: 200, height: 80)
         key.backgroundColor = .blue
         key.setTitle("C", for: .normal)
-        key.setTitle("c", for: .highlighted)
+        key.setTitle("C", for: .highlighted)
         view.addSubview(key)
         key.addTarget(self, action: #selector(keyPlay(_:)), for: .touchDown)
         
     }
     
     @objc func keyPlay(_ sender: UIButton) {
-        playSound()
+        playSound(forKey: sender.currentTitle!)
+        sender.alpha = 0.5
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            sender.alpha = 1.0
+        }
     }
-  
     
-    @IBAction func keyPressed(_ sender: UIButton) {
-        playSound()
-    }
-    
-    func playSound() {
-        let url = Bundle.main.url(forResource: "C", withExtension: "wav")
+    func playSound(forKey soundName: String) {
+        let url = Bundle.main.url(forResource: soundName, withExtension: "wav")
             player = try! AVAudioPlayer(contentsOf: url!)
             player.play()
     }
