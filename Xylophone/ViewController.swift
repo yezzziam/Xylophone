@@ -18,13 +18,60 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         key = UIButton(type: .custom)
-        key.frame = CGRect(x: 100, y: 100, width: 200, height: 80)
+        key.frame = CGRect(x: 20, y: 50, width: 380, height: 80)
         key.backgroundColor = .blue
         key.setTitle("C", for: .normal)
         key.setTitle("C", for: .highlighted)
         view.addSubview(key)
         key.addTarget(self, action: #selector(keyPlay(_:)), for: .touchDown)
         
+        key = UIButton(type: .custom)
+        key.frame = CGRect(x: 20, y: 140, width: 340, height: 80)
+        key.backgroundColor = .green
+        key.setTitle("D", for: .normal)
+        key.setTitle("D", for: .highlighted)
+        view.addSubview(key)
+        key.addTarget(self, action: #selector(keyPlay(_:)), for: .touchDown)
+        
+        key = UIButton(type: .custom)
+        key.frame = CGRect(x: 20, y: 230, width: 300, height: 80)
+        key.backgroundColor = .yellow
+        key.setTitle("E", for: .normal)
+        key.setTitle("E", for: .highlighted)
+        view.addSubview(key)
+        key.addTarget(self, action: #selector(keyPlay(_:)), for: .touchDown)
+        
+        key = UIButton(type: .custom)
+        key.frame = CGRect(x: 20, y: 320, width: 260, height: 80)
+        key.backgroundColor = .red
+        key.setTitle("F", for: .normal)
+        key.setTitle("F", for: .highlighted)
+        view.addSubview(key)
+        key.addTarget(self, action: #selector(keyPlay(_:)), for: .touchDown)
+        
+        key = UIButton(type: .custom)
+        key.frame = CGRect(x: 20, y: 410, width: 220, height: 80)
+        key.backgroundColor = .purple
+        key.setTitle("G", for: .normal)
+        key.setTitle("G", for: .highlighted)
+        view.addSubview(key)
+        key.addTarget(self, action: #selector(keyPlay(_:)), for: .touchDown)
+        
+        key = UIButton(type: .custom)
+        key.frame = CGRect(x: 20, y: 500, width: 180, height: 80)
+        key.backgroundColor = .magenta
+        key.setTitle("A", for: .normal)
+        key.setTitle("A", for: .highlighted)
+        view.addSubview(key)
+        key.addTarget(self, action: #selector(keyPlay(_:)), for: .touchDown)
+        
+        key = UIButton(type: .custom)
+        key.frame = CGRect(x: 20, y: 590, width: 140, height: 80)
+        key.backgroundColor = .cyan
+        key.setTitle("B", for: .normal)
+        key.setTitle("B", for: .highlighted)
+        view.addSubview(key)
+        key.addTarget(self, action: #selector(keyPlay(_:)), for: .touchDown)
     }
     
     @objc func keyPlay(_ sender: UIButton) {
@@ -40,7 +87,5 @@ class ViewController: UIViewController {
             player = try! AVAudioPlayer(contentsOf: url!)
             player.play()
     }
-
-
 }
 

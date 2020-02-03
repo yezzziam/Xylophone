@@ -85,13 +85,13 @@
 		914E4EDC23E4912500C88AC9 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
-				914E4EDD23E4912500C88AC9 /* A.wav */,
 				914E4EDE23E4912500C88AC9 /* C.wav */,
-				914E4EDF23E4912500C88AC9 /* B.wav */,
+				914E4EE323E4912500C88AC9 /* D.wav */,
+				914E4EE223E4912500C88AC9 /* E.wav */,
 				914E4EE023E4912500C88AC9 /* F.wav */,
 				914E4EE123E4912500C88AC9 /* G.wav */,
-				914E4EE223E4912500C88AC9 /* E.wav */,
-				914E4EE323E4912500C88AC9 /* D.wav */,
+				914E4EDD23E4912500C88AC9 /* A.wav */,
+				914E4EDF23E4912500C88AC9 /* B.wav */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";
