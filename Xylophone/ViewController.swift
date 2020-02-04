@@ -24,89 +24,32 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         makeKeys(7)
-        
-//        let key = UIButton(type: .custom)
-//        key.frame = CGRect(x: 0, y: 0, width: 320, height: 80)
-//        key.backgroundColor = .random
-//        key.setTitle("C", for: .normal)
-//        key.setTitle("C", for: .highlighted)
-//        view.addSubview(key)
-//        key.addTarget(self, action: #selector(keyPlay(_:)), for: .touchDown)
-        
-//        key = UIButton(type: .custom)
-//        key.frame = CGRect(x: 20, y: 140, width: 360, height: 80)
-//        key.backgroundColor = .random
-//        key.setTitle("D", for: .normal)
-//        key.setTitle("D", for: .highlighted)
-//        view.addSubview(key)
-//        key.addTarget(self, action: #selector(keyPlay(_:)), for: .touchDown)
-//
-//        key = UIButton(type: .custom)
-//        key.frame = CGRect(x: 20, y: 230, width: 340, height: 80)
-//        key.backgroundColor = .random
-//        key.setTitle("E", for: .normal)
-//        key.setTitle("E", for: .highlighted)
-//        view.addSubview(key)
-//        key.addTarget(self, action: #selector(keyPlay(_:)), for: .touchDown)
-//
-//        key = UIButton(type: .custom)
-//        key.frame = CGRect(x: 20, y: 320, width: 320, height: 80)
-//        key.backgroundColor = .random
-//        key.setTitle("F", for: .normal)
-//        key.setTitle("F", for: .highlighted)
-//        view.addSubview(key)
-//        key.addTarget(self, action: #selector(keyPlay(_:)), for: .touchDown)
-//
-//        key = UIButton(type: .custom)
-//        key.frame = CGRect(x: 20, y: 410, width: 300, height: 80)
-//        key.backgroundColor = .random
-//        key.setTitle("G", for: .normal)
-//        key.setTitle("G", for: .highlighted)
-//        view.addSubview(key)
-//        key.addTarget(self, action: #selector(keyPlay(_:)), for: .touchDown)
-//
-//        key = UIButton(type: .custom)
-//        key.frame = CGRect(x: 20, y: 500, width: 280, height: 80)
-//        key.backgroundColor = .random
-//        key.setTitle("A", for: .normal)
-//        key.setTitle("A", for: .highlighted)
-//        view.addSubview(key)
-//        key.addTarget(self, action: #selector(keyPlay(_:)), for: .touchDown)
-//
-//        key = UIButton(type: .custom)
-//        key.frame = CGRect(x: 20, y: 590, width: 260, height: 80)
-//        key.backgroundColor = .random
-//        key.setTitle("B", for: .normal)
-//        key.setTitle("B", for: .highlighted)
-//        view.addSubview(key)
-//        key.addTarget(self, action: #selector(keyPlay(_:)), for: .touchDown)
     }
-    
-    func makeKeys(_ number: Int) {
+    // Creating UI w/ keys
+    func makeKeys(_ key: Int) {
         
-        for i in 1...number {
-            
+        for key in 1...key {
+            // Counter for adding distnace between keys
             var distance = 0
-            distance += i
+            distance += key
             
-            var newWidth = 400
-            newWidth -= 20
-            
-            let btnFrame: CGRect = CGRect(x: 10, y: 100, width: newWidth, height: 100)
+            let btnFrame: CGRect = CGRect(x: 10, y: 100, width: 400, height: 100)
             let btnCenter: CGPoint = CGPoint(x: horizontialCenter, y: CGFloat(distance)*verticalDistance)
             let btnBgColor: UIColor = UIColor.random
-            let btnTitle: String = keys[i-1]
+            
+            // Creating key title from a soundkeys array
+            let btnTitle: String = keys[key-1]
             let btnTitleColor: UIColor = UIColor.white
             let btnTitleFont: UIFont = UIFont.boldSystemFont(ofSize: 35)
             
-            let customButton: UIButton = createButtonByType(btnType: UIButton.ButtonType.custom, btnFrame: btnFrame, btnCenter: btnCenter, bgColor: btnBgColor, title: btnTitle, titleColor: btnTitleColor, titleFont: btnTitleFont)
+            let customButton: UIButton = createKey(btnType: UIButton.ButtonType.custom, btnFrame: btnFrame, btnCenter: btnCenter, bgColor: btnBgColor, title: btnTitle, titleColor: btnTitleColor, titleFont: btnTitleFont)
             
             self.view.addSubview(customButton)
             customButton.addTarget(self, action: #selector(keyPlay(_:)), for: .touchDown)
         }
 }
-    
-    func createButtonByType(btnType:UIButton.ButtonType, btnFrame:CGRect, btnCenter: CGPoint, bgColor: UIColor, title: String, titleColor: UIColor, titleFont: UIFont) -> UIButton {
+    // Creating a key based on UIButton
+    func createKey(btnType:UIButton.ButtonType, btnFrame:CGRect, btnCenter: CGPoint, bgColor: UIColor, title: String, titleColor: UIColor, titleFont: UIFont) -> UIButton {
         
         // Create the button with the button type.
         let btn:UIButton = UIButton(type: btnType)
@@ -133,7 +76,7 @@ class ViewController: UIViewController {
         return btn
         
     }
-    
+    // Matching title with sound names and playing sounds.
     @objc func keyPlay(_ sender: UIButton) {
         playSound(forKey: sender.currentTitle!)
         sender.alpha = 0.5
@@ -142,13 +85,14 @@ class ViewController: UIViewController {
         }
     }
     
+    //Playing sounds
     func playSound(forKey soundName: String) {
         let url = Bundle.main.url(forResource: soundName, withExtension: "wav")
             player = try! AVAudioPlayer(contentsOf: url!)
             player.play()
     }
 }
-
+// Extending UI color to generate random plain colors.
 extension UIColor {
     static var random: UIColor {
         return .init(hue: .random(in: 0...1), saturation: 1, brightness: 1, alpha: 1)
